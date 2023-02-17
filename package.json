@@ -1,0 +1,23 @@
+{
+  "name": "apple-istore",
+  "version": "1.0.0",
+  "description": "iStore Apple Premium Reseller. We are Authorised Resellers of Apple Products. Find the best offers on iPhone, iPad, MacBook, Watch & more. ( Mock Website )",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayan-IN/apple-iStore.git"
+  },
+  "keywords": [
+    "MERN",
+    "development"
+  ],
+  "author": "Ayan Chakraborty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayan-IN/apple-iStore/issues"
+  },
+  "homepage": "https://github.com/ayan-IN/apple-iStore#readme"
+}
