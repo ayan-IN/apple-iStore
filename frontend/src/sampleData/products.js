@@ -1,0 +1,111 @@
+const products = [
+  {
+    name: 'Pro Display XDR',
+    image: '/images/prodisplay.jpeg',
+    description:
+      'Built for professionals throughout the workflow—from editor and animator to colorist and photographer—Apple® Pro Display XDR features groundbreaking technology for extreme brightness and contrast, gorgeous color, and pro-level precision.',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 4999.99,
+    countInStock: 2,
+    rating: 4.5,
+    numReviews: 8,
+  },
+  {
+    name: 'Macbook Air',
+    image: '/images/macbook.jpg',
+    description:
+      'The MacBook Air features a Retina display, that shows true, and lifelike colours, crisp text, vibrant photos, and sharp images.',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 999.99,
+    countInStock: 2,
+    rating: 4,
+    numReviews: 18,
+  },
+  {
+    name: 'Mac Mini',
+    image: '/images/macmini.jpg',
+    description:
+      'Mac mini is a powerful desktop for content creation. Run more plug‑ins and layer more audio tracks in Logic Pro. And edit multiple streams of 4K and 8K ProRes',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 599.99,
+    countInStock: 2,
+    rating: 3.5,
+    numReviews: 7,
+  },
+  {
+    name: 'Airpods',
+    image: '/images/airpods.jpeg',
+    description:
+      'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 100.00,
+    countInStock: 10,
+    rating: 4.5,
+    numReviews: 10,
+  },
+  {
+    name: 'iPhone 14 Pro',
+    image: '/images/iphone.jpeg',
+    description:
+      'Introducing the iPhone 14 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life and an all new features of a dynamic island',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 899.99,
+    countInStock: 7,
+    rating: 4.0,
+    numReviews: 8,
+  },
+  {
+    name: 'New Gen. Imac',
+    image: '/images/imac.jpeg',
+    description:
+      'The new iMac. 7 vibrant colours. Impossibly thin design. 24-inch 4.5K Retina display. The best camera, mics and speakers in a Mac. Supercharged by M1.',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 929.99,
+    countInStock: 5,
+    rating: 3,
+    numReviews: 12,
+  },
+  {
+    name: 'Airpod Max',
+    image: '/images/airpodmax.jpeg',
+    description:
+      'AirPods Max combine high-fidelity audio with industry-leading Active Noise Cancellation to deliver an unparalleled listening experience.',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 399.99,
+    countInStock: 11,
+    rating: 5,
+    numReviews: 12,
+  },
+  {
+    name: 'iPad',
+    image: '/images/ipad.jpg',
+    description:
+      'Apple iPads are world-renowned tablets with cutting-edge technology for your everyday computing, creativity, and immersive entertainment.',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 600.99,
+    countInStock: 7,
+    rating: 3.5,
+    numReviews: 10,
+  },
+  {
+    name: 'Mac Pro',
+    image: '/images/macpro.jpeg',
+    description:
+      'Power to change everything. Say hello to a Mac that is extreme in every way. With the greatest performance, expansion and configurability yet, it is a system created to let a wide range of professionals push the limits of what is possible.',
+    brand: 'Apple',
+    category: 'Electronics',
+    price: 2999.99,
+    countInStock: 2,
+    rating: 4,
+    numReviews: 12,
+  },
+]
+export default products

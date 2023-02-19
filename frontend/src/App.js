@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/header/header.component'
+import { Container } from 'react-bootstrap'
+import LoginScreen from './screens/login-screen/login-screen.component'
+import RegisterScreen from './screens/register-screen/register-screen.component'
+import HomeScreen from './screens/home-screen/home-screen.component'
+import ProductScreen from './screens/product-screen/product-screen.component'
+import CartScreen from './screens/cart-screen/cart-screen.component'
+import Footer from './components/footer/footer.component'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Header />
+      <main className='py-3'>
+        <Container>
+          <Routes>
+            <Route index path='/' element={<HomeScreen />} />
+            <Route path='/login' element={<LoginScreen />} />
+            <Route path='/register' element={<RegisterScreen />} />
+            <Route path='/product/:id' element={<ProductScreen />} />
+            <Route path='cart/:id?' element={<CartScreen />} />
+          </Routes>
+        </Container>
+      </main>
+      <Footer />
+    </Router>
+  )
 }
 
-export default App;
+export default App
