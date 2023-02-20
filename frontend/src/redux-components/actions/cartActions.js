@@ -20,8 +20,24 @@ export const addToCart = (productID, qty) => async (dispatch, getState) => {
 
 //* Remove from cart
 export const removeFromCart = (productID) => (dispatch, getState) => {
-    dispatch({
-        type: CART_CONSTANT_TYPES.CART_REMOVE_ITEM,
-        payload: productID
-    })
+  dispatch({
+    type: CART_CONSTANT_TYPES.CART_REMOVE_ITEM,
+    payload: productID,
+  })
+}
+
+//* Save shipping address
+export const saveShippingAddress = (data) => (dispatch) => {
+  dispatch({
+    type: CART_CONSTANT_TYPES.CART_SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  })
+}
+
+//* Save payment-method
+export const savePaymentMethod = (data) => (dispatch) => {
+  dispatch({
+    type: CART_CONSTANT_TYPES.CART_SAVE_PAYMENT_METHOD,
+    payload: data,
+  })
 }
