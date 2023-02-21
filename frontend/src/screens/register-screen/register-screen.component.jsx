@@ -9,10 +9,12 @@ import {
   FormControl,
   Image,
 } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useLocation, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { register } from '../../redux-components/actions/userActions'
 import FormContainer from '../../components/form-container/form-container.component'
+import Message from '../../components/message/message.component'
+import Loader from '../../components/loader/loader.component'
 
 const RegisterScreen = () => {
   const [name, setName] = useState('')
@@ -23,8 +25,18 @@ const RegisterScreen = () => {
 
   const dispatch = useDispatch()
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const userRegister = useSelector((state) => state.userRegister)
+  const { loading, error, userInfo } = userRegister
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect)
+    }
+  }, [navigate, userInfo, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -32,10 +44,6 @@ const RegisterScreen = () => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
     } else {
-      console.log('Entered Credentials (Register) : ')
-      console.log('Name : ', name)
-      console.log('Email : ', email)
-      console.log('Password : ', password)
       dispatch(register(name, email, password))
     }
   }
@@ -54,6 +62,9 @@ const RegisterScreen = () => {
       <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>
         One account for everything Apple
       </h3>
+      {message && <Message variant='danger'>{message}</Message>}
+      {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <FormGroup controlId='name'>
           <FormLabel>Name</FormLabel>

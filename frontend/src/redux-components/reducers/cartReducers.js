@@ -1,4 +1,4 @@
-import { CART_CONSTANT_TYPES } from '../constants/cartActions'
+import { CART_CONSTANT_TYPES } from '../constants/cartConstants'
 
 export const cartReducer = (
   state = { cartItems: [], shippingAddress: {} },
@@ -35,6 +35,11 @@ export const cartReducer = (
       return {
         ...state,
         paymentMethod: action.payload,
+      }
+    case CART_CONSTANT_TYPES.CART_RESET:
+      return {
+        ...state,
+        cartItems: [],
       }
     default:
       return state

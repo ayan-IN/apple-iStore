@@ -25,7 +25,7 @@ const PaymentMethodScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(savePaymentMethod(paymentMethod))
-    navigate('/placeorder')
+    navigate('/place-order')
   }
 
   return (
@@ -56,7 +56,12 @@ const PaymentMethodScreen = () => {
             ></FormCheck> */}
           </Col>
         </FormGroup>
-        <Button className='my-1' type='submit' variant='primary'>
+        <Button
+          className='my-1'
+          type='submit'
+          variant='primary'
+          style={{ borderRadius: '10px' }}
+        >
           Continue
         </Button>
       </Form>

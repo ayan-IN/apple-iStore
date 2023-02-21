@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CART_CONSTANT_TYPES } from '../constants/cartActions'
+import { CART_CONSTANT_TYPES } from '../constants/cartConstants'
 
 //* Add to Cart actions
 export const addToCart = (productID, qty) => async (dispatch, getState) => {
@@ -39,5 +39,12 @@ export const savePaymentMethod = (data) => (dispatch) => {
   dispatch({
     type: CART_CONSTANT_TYPES.CART_SAVE_PAYMENT_METHOD,
     payload: data,
+  })
+}
+
+//* Reset Cart after successful order placing
+export const resetCart = () => (dispatch) => {
+  dispatch({
+    type: CART_CONSTANT_TYPES.CART_RESET,
   })
 }

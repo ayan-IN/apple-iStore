@@ -2,13 +2,17 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Nav, Navbar, NavDropdown, Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { logout } from '../../redux-components/actions/userActions'
+import {
+  logout,
+} from '../../redux-components/actions/userActions'
+import { resetMyOrders } from '../../redux-components/actions/orderActions'
 const Header = () => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
   const logoutHandler = () => {
+    dispatch(resetMyOrders())
     dispatch(logout())
   }
   return (

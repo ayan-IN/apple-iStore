@@ -13,6 +13,8 @@ import {
 } from 'react-bootstrap'
 import FormContainer from '../../components/form-container/form-container.component'
 import { login } from '../../redux-components/actions/userActions'
+import Message from "../../components/message/message.component"
+import Loader from "../../components/loader/loader.component"
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -35,9 +37,6 @@ const LoginScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     //DISPATCH LOGIN
-    console.log('Entered Credentials (Login) : ')
-    console.log('Email : ', email)
-    console.log('Password : ', password)
     dispatch(login(email, password))
   }
   return (
@@ -55,6 +54,8 @@ const LoginScreen = () => {
       <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>
         One account for everything Apple
       </h3>
+      {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <FormGroup controlId='email'>
           <FormLabel>Email Address</FormLabel>

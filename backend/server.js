@@ -13,6 +13,9 @@ import userRoutes from './routes/userRoutes.js'
 //* Routes for product related API calls
 import productRoutes from './routes/productRoutes.js'
 
+//* Routes for order related API calls
+import orderRoutes from './routes/orderRoutes.js'
+
 //* Custom Middlewares
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
@@ -30,11 +33,13 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('API is running...')
 })
-//* User route
-app.use('/api/users', userRoutes)
 
 //* Products route
 app.use('/api/products', productRoutes)
+//* User route
+app.use('/api/users', userRoutes)
+//* Order route
+app.use('/api/orders', orderRoutes)
 
 //* Middleware handler
 app.use(notFound)
