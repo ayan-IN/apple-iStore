@@ -57,7 +57,6 @@ const PlaceorderScreen = () => {
   }, [navigate, success, order])
 
   const placeOrderHandler = () => {
-    alert('New order')
     dispatch(
       createdOrder({
         orderItems: cartItems,

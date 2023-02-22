@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import Rating from '../rating/rating.component'
 
+const useStyles = {
+  boxShadow:
+    'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px',
+  border: 'none',
+  textAlign: "center"
+}
+
 const Product = ({ product }) => {
   return (
-    <Card className='my-2 py-3 px-4 rounded'>
+    <Card className='my-2 py-3 px-4 rounded' style={useStyles}>
       <Link
         to={`/product/${product._id}`}
         style={{
@@ -24,7 +31,7 @@ const Product = ({ product }) => {
       <Card.Body>
         <Link to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
           <Card.Title as='div'>
-            <strong style={{ fontWeight: "bold" }}>{product.name}</strong>
+            <strong style={{ fontWeight: 500, color: "black" }}>{product.name}</strong>
           </Card.Title>
         </Link>
         <Card.Text as='div'>

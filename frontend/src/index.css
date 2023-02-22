@@ -1,7 +1,7 @@
 main {
   min-height: 80vh;
   /* font-family: 'Inter', sans-serif; */
-  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
 }
 h1 {
   text-transform: none;

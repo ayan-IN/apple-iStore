@@ -12,6 +12,10 @@ import PaymentMethodScreen from './screens/paymentMethod-screen/paymentMethod-sc
 import PlaceorderScreen from './screens/place-order/place-order.component'
 import OrderScreen from './screens/order-screen/order-screen.component'
 import ProfileScreen from './screens/profile-screen/profile-screen.component'
+import UserListScreen from './screens/admin-screens/userList-screen/userList-screen.component'
+import UserEditScreen from './screens/admin-screens/userEdit-screen/userEdit-screen.component'
+import ProductListScreen from './screens/admin-screens/productList-screen/productList-screen.component'
+import ProductEditScreen from './screens/admin-screens/productEdit-screen/productEdit-screen.component'
 
 const App = () => {
   return (
@@ -29,6 +33,13 @@ const App = () => {
             <Route path='/shipping' element={<ShippingScreen />} />
             <Route path='/payment-method' element={<PaymentMethodScreen />} />
             <Route path='/place-order' element={<PlaceorderScreen />} />
+            <Route path='/admin/userlist' element={<UserListScreen />} />
+            <Route path='/admin/productlist' element={<ProductListScreen />} />
+            <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
+            <Route
+              path='/admin/product/:id/edit'
+              element={<ProductEditScreen />}
+            />
             <Route path='/order/:id' element={<OrderScreen />} />
           </Routes>
         </Container>

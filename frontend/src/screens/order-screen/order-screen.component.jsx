@@ -32,12 +32,12 @@ const OrderScreen = () => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-      <h1>Order {order._id}</h1>
+      <h2>Order {order._id}</h2>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroupItem>
-              <h2>Shipping</h2>
+              <h3>Shipping Details</h3>
               <p>
                 <strong>Name: </strong>
                 {order.user.name}
@@ -59,7 +59,7 @@ const OrderScreen = () => {
               )}
             </ListGroupItem>
             <ListGroupItem>
-              <h2>Paymnet Method</h2>
+              <h3>Paymnet Method</h3>
               <p>
                 <strong>Method: </strong>
                 {order.paymentMethod}
@@ -71,7 +71,7 @@ const OrderScreen = () => {
               )}
             </ListGroupItem>
             <ListGroupItem>
-              <h2>Order Items</h2>
+              <h3>Order Items</h3>
               {order.orderItems.length === 0 ? (
                 <Message>Order is empty</Message>
               ) : (
@@ -107,7 +107,7 @@ const OrderScreen = () => {
           <Card>
             <ListGroup variant='flush'>
               <ListGroupItem>
-                <h2>Order Summary</h2>
+                <h3>Order Summary</h3>
               </ListGroupItem>
               <ListGroupItem>
                 <Row>

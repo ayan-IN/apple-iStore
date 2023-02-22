@@ -2,10 +2,14 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Nav, Navbar, NavDropdown, Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import {
-  logout,
-} from '../../redux-components/actions/userActions'
+import { logout } from '../../redux-components/actions/userActions'
 import { resetMyOrders } from '../../redux-components/actions/orderActions'
+
+const useStyles = {
+  boxShadow: 'rgba(0, 0, 0, 0.04) 0px 3px 5px',
+  textTransform: 'none',
+}
+
 const Header = () => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
@@ -18,12 +22,12 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        bg='dark'
+        bg='primary'
         variant='dark'
         expand='lg'
         collapseOnSelect
         className='py-2'
-        style={{ textTransform: 'none' }}
+        style={useStyles}
       >
         <Container>
           <LinkContainer to='/'>
@@ -63,6 +67,19 @@ const Header = () => {
                     <i className='fas fa-user'></i> Sign In
                   </Nav.Link>
                 </LinkContainer>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/productlist'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>

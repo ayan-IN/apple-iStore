@@ -163,7 +163,7 @@ const ProfileScreen = () => {
         ) : (
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
-              <tr>
+              <tr className='table-success'>
                 <th>ID</th>
                 <th>DATE</th>
                 <th>TOTAL</th>
