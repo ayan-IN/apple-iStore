@@ -18,7 +18,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('No order items')
   } else {
-    console.log('User ID for order : ', req.user)
     const order = new Order({
       user: req.user._id,
       orderItems,

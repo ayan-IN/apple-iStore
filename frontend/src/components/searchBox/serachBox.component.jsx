@@ -8,7 +8,6 @@ const SearchBox = () => {
   const submitHandler = (e) => {
     e.preventDefault()   
     if (keyword.trim()) {
-      console.log('Nav')
       navigate(`/search/${keyword}`)
     } else {
       navigate('/')

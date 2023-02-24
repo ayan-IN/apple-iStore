@@ -48,8 +48,6 @@ const ProfileScreen = () => {
   const orderListMy = useSelector((state) => state.orderListMy)
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
-  //   console.log('MY ORDSERS : ', orders)
-  //   console.log('Login Redirect : ', location.search)
   useEffect(() => {
     dispatch(listMyOrders())
   }, [])

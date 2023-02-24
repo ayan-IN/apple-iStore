@@ -45,7 +45,6 @@ const ProductScreen = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (successProductReview) {
-      alert('Review Submitted!')
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CONSTANT_TYPES.PRODUCT_CREATE_REVIEW_RESET })
