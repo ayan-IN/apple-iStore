@@ -3,7 +3,6 @@
   "type": "module",
   "version": "1.0.0",
   "description": "iStore Apple Premium Reseller. We are Authorised Resellers of Apple Products. Find the best offers on iPhone, iPad, MacBook, Watch & more. ( Mock Website )",
-  "main": "./backend/server.js",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
