@@ -3,14 +3,15 @@
   "type": "module",
   "version": "1.0.0",
   "description": "iStore Apple Premium Reseller. We are Authorised Resellers of Apple Products. Find the best offers on iPhone, iPad, MacBook, Watch & more. ( Mock Website )",
-  "main": "server.js",
+  "main": "./backend/server.js",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder/seeder",
-    "data:destroy": "node backend/seeder/seeder -d"
+    "data:destroy": "node backend/seeder/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,8 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.2",
-    "multer": "^1.4.5-lts.1"
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "stripe": "^11.11.0"
   }
 }

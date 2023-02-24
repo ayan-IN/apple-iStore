@@ -31,7 +31,9 @@ const Product = ({ product }) => {
       <Card.Body>
         <Link to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
           <Card.Title as='div'>
-            <strong style={{ fontWeight: 500, color: "black" }}>{product.name}</strong>
+            <strong style={{ fontWeight: 500, color: 'black' }}>
+              {product.name}
+            </strong>
           </Card.Title>
         </Link>
         <Card.Text as='div'>
@@ -43,7 +45,7 @@ const Product = ({ product }) => {
           </div>
         </Card.Text>
         <Card.Text as='h3' style={{ fontSize: '1.2rem' }}>
-          ${product.price}
+          ₹{product.price}
         </Card.Text>
       </Card.Body>
     </Card>

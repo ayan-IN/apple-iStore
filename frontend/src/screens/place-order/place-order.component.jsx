@@ -17,6 +17,7 @@ import {
   resetCreateOrderState,
 } from '../../redux-components/actions/orderActions'
 import { resetCart } from '../../redux-components/actions/cartActions'
+import { ORDER_TYPE_CONSTANTS } from '../../redux-components/constants/orderConstants'
 
 const PlaceorderScreen = () => {
   const dispatch = useDispatch()
@@ -68,6 +69,7 @@ const PlaceorderScreen = () => {
         totalPrice,
       })
     )
+    dispatch({ type: ORDER_TYPE_CONSTANTS.ORDER_LIST_MY_RESET })
   }
   return (
     <>

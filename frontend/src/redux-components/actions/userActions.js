@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { USER_CONSTANT_TYPES } from '../constants/userConstants'
+import { ORDER_TYPE_CONSTANTS } from '../constants/orderConstants'
 
 //* Register action for user
 export const register = (name, email, password) => async (dispatch) => {
@@ -76,6 +77,7 @@ export const logout = () => (dispatch) => {
     type: USER_CONSTANT_TYPES.USER_LOGOUT,
   })
   dispatch({ type: USER_CONSTANT_TYPES.USER_LIST_RESET })
+  dispatch({ type: ORDER_TYPE_CONSTANTS.ORDER_LIST_RESET })
 }
 export const resetUserDetails = () => (dispatch) => {
   dispatch({

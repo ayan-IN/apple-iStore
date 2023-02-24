@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 import {
   Form,
@@ -6,10 +7,9 @@ import {
   FormLabel,
   FormControl,
   Image,
-  FormCheck,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   listProductDetails,
   updateProduct,
@@ -17,7 +17,6 @@ import {
 import FormContainer from '../../../components/form-container/form-container.component'
 import Message from '../../../components/message/message.component'
 import Loader from '../../../components/loader/loader.component'
-import { USER_CONSTANT_TYPES } from '../../../redux-components/constants/userConstants'
 import { PRODUCT_CONSTANT_TYPES } from '../../../redux-components/constants/productConstants'
 
 const ProductEditScreen = () => {
@@ -30,9 +29,9 @@ const ProductEditScreen = () => {
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
+  const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
-  const location = useLocation()
   const navigate = useNavigate()
 
   const productDetails = useSelector((state) => state.productDetails)
@@ -63,6 +62,28 @@ const ProductEditScreen = () => {
       }
     }
   }, [dispatch, product, navigate, productId, successUpdate])
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      setImage(data)
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
+  }
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -145,6 +166,14 @@ const ProductEditScreen = () => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></FormControl>
+              <FormControl
+                type='file'
+                // id='image-file'
+                label='Choose File'
+                // custom
+                onChange={uploadFileHandler}
+              ></FormControl>
+              {uploading && <Loader />}
             </FormGroup>
 
             <FormGroup controlId='brand'>

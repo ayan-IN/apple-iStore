@@ -8,11 +8,16 @@ const reviewSchema = mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: true,
+      // required: true,
     },
     comment: {
       type: String,
       required: true,
+    },
+    user: {
+      type: mongoose.SchemaTypes.ObjectId,
+      required: true,
+      ref: 'User',
     },
   },
   {

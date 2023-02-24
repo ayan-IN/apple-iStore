@@ -20,7 +20,10 @@ import {
   updateUserProfile,
   resetUserUpdateDetails,
 } from '../../redux-components/actions/userActions'
-import { listMyOrders } from '../../redux-components/actions/orderActions'
+import {
+  listMyOrders,
+  resetMyOrders,
+} from '../../redux-components/actions/orderActions'
 
 const ProfileScreen = () => {
   const [name, setName] = useState('')
@@ -47,22 +50,23 @@ const ProfileScreen = () => {
 
   //   console.log('MY ORDSERS : ', orders)
   //   console.log('Login Redirect : ', location.search)
+  useEffect(() => {
+    dispatch(listMyOrders())
+  }, [])
 
   useEffect(() => {
     if (!userInfo) {
       navigate('/login')
     } else {
       if (!user.name) {
-        console.log('User req called')
         dispatch(getUserDetails('profile'))
-        console.log('Inside UseEffet')
         dispatch(listMyOrders())
       } else {
         setName(user.name)
         setEmail(user.email)
       }
     }
-  }, [navigate, userInfo, dispatch, user])
+  }, [navigate, userInfo, dispatch, orders])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -199,7 +203,6 @@ const ProfileScreen = () => {
                       </Button>
                     </LinkContainer>
                   </td>
-                  <td></td>
                 </tr>
               ))}
             </tbody>

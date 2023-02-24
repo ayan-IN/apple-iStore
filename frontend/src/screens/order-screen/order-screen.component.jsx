@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Row,
   Col,
@@ -6,25 +6,80 @@ import {
   Image,
   Card,
   ListGroupItem,
+  Button,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Message from '../../components/message/message.component'
 import Loader from '../../components/loader/loader.component'
-import { getOrderDetails } from '../../redux-components/actions/orderActions'
+import {
+  getOrderDetails,
+  deliverOrder,
+} from '../../redux-components/actions/orderActions'
 import { resetUserDetails } from '../../redux-components/actions/userActions'
+import { ORDER_TYPE_CONSTANTS } from '../../redux-components/constants/orderConstants'
+//! Payment Form
+import CheckoutForm from '../../components/checkoutForm/CheckoutForm.component'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY)
+//! Payment Form
 
 const OrderScreen = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const orderId = id
 
+  //!Payment
+  const [clientSecret, setClientSecret] = useState('')
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
   useEffect(() => {
-    dispatch(getOrderDetails(orderId))
-    dispatch(resetUserDetails())
-  }, [dispatch, orderId])
+    if (orderId) {
+      dispatch(getOrderDetails(orderId))
+    }
+  }, [])
+  useEffect(() => {
+    if (order && !order.isPaid) {
+      // Create PaymentIntent as soon as the page loads
+      fetch('/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: Math.ceil(order.totalPrice * 100) }),
+      })
+        .then((res) => res.json())
+        .then((data) => setClientSecret(data.clientSecret))
+    }
+    // if (!order) {
+    //   dispatch(getOrderDetails(orderId))
+    // }
+  }, [dispatch, orderId, order])
+
+  const appearance = {
+    theme: 'stripe',
+  }
+  const options = {
+    clientSecret,
+    appearance,
+  }
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+  //! Payment
+
+  const orderDeliver = useSelector((state) => state.orderDeliver)
+  const { loading: loadingDeliver, success: successDeliver } = orderDeliver
+
+  useEffect(() => {
+    if (!order || successDeliver) {
+      dispatch({ type: ORDER_TYPE_CONSTANTS.ORDER_DELIVER_RESET })
+      dispatch(getOrderDetails(orderId))
+      // dispatch(resetUserDetails())
+    }
+  }, [dispatch, orderId, order, successDeliver])
+
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order))
+  }
 
   return loading ? (
     <Loader />
@@ -133,6 +188,24 @@ const OrderScreen = () => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroupItem>
+              <ListGroupItem>
+                {!userInfo.isAdmin && !order.isPaid && clientSecret && (
+                  <Elements options={options} stripe={stripePromise}>
+                    <CheckoutForm />
+                  </Elements>
+                )}
+              </ListGroupItem>
+              {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                <ListGroupItem>
+                  <Button
+                    type='button'
+                    className='btn btn-block col-12'
+                    onClick={deliverHandler}
+                  >
+                    Mark As Delivered
+                  </Button>
+                </ListGroupItem>
+              )}
             </ListGroup>
           </Card>
         </Col>

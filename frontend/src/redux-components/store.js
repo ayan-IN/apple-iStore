@@ -13,10 +13,11 @@ const persistConfig = {
 const middleware = [thunk]
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-export const store = createStore(
-  persistedReducer,
-  undefined,
-  composeWithDevTools(applyMiddleware(...middleware))
-)
+const enhancers =
+  process.env.NODE_ENV === 'production'
+    ? applyMiddleware(...middleware)
+    : composeWithDevTools(applyMiddleware(...middleware))
+
+export const store = createStore(persistedReducer, undefined, enhancers)
 
 export const persistor = persistStore(store)

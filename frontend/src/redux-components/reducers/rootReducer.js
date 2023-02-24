@@ -15,12 +15,17 @@ import {
   productDeleteReducer,
   productCreateReducer,
   productUpdateReducer,
+  productCreateReviewReducer,
+  productTopRatedReducer,
 } from './productReducers'
 import { cartReducer } from './cartReducers'
 import {
   orderCreateReducer,
+  orderDeliverReducer,
   orderDetailsReducer,
   orderListMyReducer,
+  orderListReducer,
+  orderPayReducer,
 } from './orderReducers'
 
 export const rootReducer = combineReducers({
@@ -30,9 +35,12 @@ export const rootReducer = combineReducers({
   userUpdateProfile: userUpdateProfileReducer,
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  productCreateReview: productCreateReviewReducer,
+  productTopRated: productTopRatedReducer,
   cart: cartReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
 
   //!ADMIN
@@ -43,4 +51,7 @@ export const rootReducer = combineReducers({
   productDelete: productDeleteReducer,
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
+
+  orderList: orderListReducer,
+  orderDeliver: orderDeliverReducer,
 })
