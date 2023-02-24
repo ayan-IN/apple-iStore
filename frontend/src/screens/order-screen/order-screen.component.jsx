@@ -22,7 +22,10 @@ import { ORDER_TYPE_CONSTANTS } from '../../redux-components/constants/orderCons
 import CheckoutForm from '../../components/checkoutForm/CheckoutForm.component'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY)
+//TODO: Try to implement dotenv even its publishable to the outside world
+const stripePromise = loadStripe(
+  'pk_test_51MWgCjSGqBPOwq23lAkJohBTg8h5t45dGk981BnE1VYlduHoHmGXffUHkdlzrvGYVnJt1d1PviJVMwA3QkYP8ZaC00gG7iE9bD'
+)
 //! Payment Form
 
 const OrderScreen = () => {
