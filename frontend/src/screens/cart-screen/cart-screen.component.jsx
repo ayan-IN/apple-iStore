@@ -65,7 +65,7 @@ const CartScreen = () => {
                       {item.name}
                     </Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>₹{item.price}</Col>
                   <Col md={2}>
                     <FormControl
                       className='form-control form-select'
@@ -104,7 +104,8 @@ const CartScreen = () => {
           <ListGroup variant='flush'>
             <ListGroupItem>
               <h2>
-                Subtotal ({cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
+                Subtotal (
+                {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
                 items
               </h2>
               $

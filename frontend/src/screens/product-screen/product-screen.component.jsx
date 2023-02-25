@@ -93,7 +93,7 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroupItem>
-                <ListGroupItem>Price: ${product.price}</ListGroupItem>
+                <ListGroupItem>Price: ₹{product.price}</ListGroupItem>
                 <ListGroupItem>
                   Description: {product.description}
                 </ListGroupItem>
@@ -198,7 +198,11 @@ const ProductScreen = () => {
                           onChange={(e) => setComment(e.target.value)}
                         ></FormControl>
                       </FormGroup>
-                      <Button type='submit' variant='primary' className='my-2 btn btn-block'>
+                      <Button
+                        type='submit'
+                        variant='primary'
+                        className='my-2 btn btn-block'
+                      >
                         Submit
                       </Button>
                     </Form>
