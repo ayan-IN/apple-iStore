@@ -74,7 +74,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://localhost:3000/order/${order._id}`,
+        return_url: `https://apple-istore.shop/order/${order._id}`,
       },
     })
 
